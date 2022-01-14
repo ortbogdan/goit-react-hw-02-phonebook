@@ -1,13 +1,11 @@
 import React from 'react';
-import { ContactsList } from '..';
 
-export const Filter = ({ id, children, contacts, onChange }) => {
-  console.log(contacts);
+export const Filter = ({ idGenerator, children, onChange }) => {
+  const id = idGenerator();
   return (
     <>
       <label htmlFor={id}>{children}</label>
-      <input type="text" id={id} onChange={onChange}></input>
-      <ContactsList contacts={contacts}></ContactsList>
+      <input type="text" name="filter" id={id} onChange={onChange}></input>
     </>
   );
 };

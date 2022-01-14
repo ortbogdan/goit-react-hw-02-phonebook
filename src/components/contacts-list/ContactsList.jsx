@@ -1,22 +1,22 @@
 import React from 'react';
-// import PropTypes from "prop-types";
-
-export const ContactsList = ({ contacts }) => {
+import PropTypes from 'prop-types';
+import { Contact } from '..';
+export const ContactsList = ({ contacts, onDeleteContact }) => {
   return (
     <ul>
       {contacts.map(({ name, id, number }) => (
-        <li key={id}>
-          {name}:<span>{number}</span>
-        </li>
+        <Contact
+          key={id}
+          name={name}
+          number={number}
+          id={id}
+          onDeleteContact={onDeleteContact}
+        ></Contact>
       ))}
     </ul>
   );
 };
 
-// ContactsList.propTypes = {
-//     contacts: PropTypes.arrayOf(PropTypes.exact({
-//       id: PropTypes.string.isRequired,
-//       name: PropTypes.string.isRequired,
-//       number: PropTypes.string.isRequired
-//     })).isRequired
-// }
+ContactsList.propTypes = {
+  contacts: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)).isRequired,
+};
