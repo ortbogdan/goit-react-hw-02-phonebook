@@ -1,6 +1,6 @@
 import React from 'react';
 import { PageButton } from './Button.styled';
-
+import PropTypes from 'prop-types';
 export const Button = ({
   type = 'button',
   children,
@@ -14,4 +14,9 @@ export const Button = ({
   ) : (
     <PageButton type={type}>{children}</PageButton>
   );
+};
+Button.propTypes = {
+  type: PropTypes.string,
+  contactId: PropTypes.string,
+  onDeleteContact: PropTypes.func,
 };

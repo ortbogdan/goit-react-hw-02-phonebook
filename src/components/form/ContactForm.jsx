@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button } from '..';
 import { Form, Input } from './ContactForm.styled';
-
+import PropTypes from 'prop-types';
 export class ContactForm extends Component {
   state = {
     name: '',
@@ -55,3 +55,8 @@ export class ContactForm extends Component {
     );
   }
 }
+
+ContactForm.propTypes = {
+  onSabmit: PropTypes.func.isRequired,
+  idGenerator: PropTypes.func.isRequired,
+};
