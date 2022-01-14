@@ -1,4 +1,5 @@
 import React from 'react';
+import { PageButton } from './Button.styled';
 
 export const Button = ({
   type = 'button',
@@ -7,10 +8,10 @@ export const Button = ({
   onDeleteContact,
 }) => {
   return onDeleteContact ? (
-    <button type={type} onClick={() => onDeleteContact(contactId)}>
+    <PageButton type={type} onClick={() => onDeleteContact(contactId)}>
       {children}
-    </button>
+    </PageButton>
   ) : (
-    <button type={type}>{children}</button>
+    <PageButton type={type}>{children}</PageButton>
   );
 };

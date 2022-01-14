@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Section, ContactsList, Form, Filter } from './components/index';
+import { Section, ContactsList, ContactForm, Filter } from './components/index';
 import { nanoid } from 'nanoid';
 
 export class App extends Component {
@@ -31,7 +31,6 @@ export class App extends Component {
     this.setState({ filter: event.currentTarget.value });
   };
   deleteContact = id => {
-    console.log(id);
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(contact => contact.id !== id),
     }));
@@ -48,11 +47,13 @@ export class App extends Component {
 
   render() {
     const findedContacts = this.findContacts();
-    console.log(findedContacts);
     return (
       <>
         <Section title={'Phonebook'}>
-          <Form onSabmit={this.addContact} idGenerator={this.generateId}></Form>
+          <ContactForm
+            onSabmit={this.addContact}
+            idGenerator={this.generateId}
+          ></ContactForm>
         </Section>
         <Section title="Contacts">
           <Filter idGenerator={this.generateId} onChange={this.filterContacts}>

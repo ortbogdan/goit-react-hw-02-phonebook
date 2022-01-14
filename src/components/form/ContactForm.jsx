@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Button } from '..';
+import { Form, Input } from './ContactForm.styled';
 
-export class Form extends Component {
+export class ContactForm extends Component {
   state = {
     name: '',
     number: '',
   };
   handleSubmit = event => {
     event.preventDefault();
-    console.log(this.props);
     const { name, number } = this.state;
     this.props.onSabmit(name, number);
     this.reset();
@@ -26,9 +26,9 @@ export class Form extends Component {
     const numberInputId = idGenerator();
     const { name, number } = this.state;
     return (
-      <form onSubmit={this.handleSubmit}>
+      <Form onSubmit={this.handleSubmit}>
         <label htmlFor={nameInputId}>Name</label>
-        <input
+        <Input
           type="text"
           name="name"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -40,7 +40,7 @@ export class Form extends Component {
         />
 
         <label htmlFor={numberInputId}>Number</label>
-        <input
+        <Input
           type="tel"
           name="number"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -51,7 +51,7 @@ export class Form extends Component {
           value={number}
         />
         <Button type="submit">Add contact</Button>
-      </form>
+      </Form>
     );
   }
 }
